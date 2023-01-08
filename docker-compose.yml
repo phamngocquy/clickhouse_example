@@ -2,19 +2,6 @@ version: "3.7"
 
 services:
 
-  #  chkeeper:
-  #    container_name: chkeeper
-  #    image: clickhouse/clickhouse-keeper:22.12-alpine
-  #    depends_on:
-  #      - chnode1
-  #    ports:
-  #      - 9181:9181
-  #    volumes:
-  #      - type: volume
-  #        source: chkeeper-logs
-  #        target: /var/lib/clickhouse/coordination/log 
-  #      - ./ch-keeper.xml:/etc/clickhouse-keeper/keeper_config.xml
-
   chnode1:
     container_name: chnode1
     hostname: chnode1
@@ -33,7 +20,7 @@ services:
       - type: volume
         source: chnode1-logs
         target: /var/log/clickhouse-server
-      - ./chnode1-config.xml:/etc/clickhouse-server/config.xml
+      - "./config.chnode1:/etc/clickhouse-server/config.d/"
 
   chnode2:
     container_name: chnode2
@@ -52,7 +39,7 @@ services:
       - type: volume
         source: chnode2-logs
         target: /var/log/clickhouse-server
-      - ./chnode2-config.xml:/etc/clickhouse-server/config.xml
+      - "./config.chnode2:/etc/clickhouse-server/config.d/"
 
   chnode3:
     container_name: chnode3
@@ -69,10 +56,9 @@ services:
       - type: volume
         source: chnode3-logs
         target: /var/log/clickhouse-server
-      - ./chnode3-config.xml:/etc/clickhouse-server/config.xml
+      - "./config.chnode3:/etc/clickhouse-server/config.d/"
 
 volumes:
-  #  chkeeper-logs:
   chnode1-data:
   chnode1-logs:
   chnode2-data:

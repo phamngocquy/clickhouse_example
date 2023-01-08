@@ -1,0 +1,24 @@
+<clickhouse>
+    <remote_servers>
+        <events>
+            <shard>
+              <replica>
+                <host>chnode1</host>
+                <port>9000</port>
+              </replica>
+            </shard>
+            <shard>
+              <replica>
+                <host>chnode2</host>
+                <port>9000</port>
+              </replica>
+            </shard>
+            <shard>
+              <replica>
+                <host>chnode3</host>
+                <port>9000</port>
+              </replica>
+            </shard>
+        </events>
+    </remote_servers>
+</clickhouse>
